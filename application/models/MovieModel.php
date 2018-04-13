@@ -13,6 +13,18 @@ class MovieModel extends CI_Model
     $query = $this->db->get('trailers');
     return $query->result();
   }
+
+  public function getReview()
+  {
+    $query = $this->db->get('reviews');
+    return $query->result();
+  }
+
+  public function getPage()
+  {
+    $query = $this->db->get('pages');
+    return $query->result();
+  }
 }
 
 ?>
