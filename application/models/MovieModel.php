@@ -1,8 +1,7 @@
 <?php
 
-class HomeModel extends CI_Model
+class MovieModel extends CI_Model
 {
-
   public function getMovie()
   {
     $query = $this->db->get('movies');
@@ -14,7 +13,6 @@ class HomeModel extends CI_Model
     $query = $this->db->get('trailers');
     return $query->result();
   }
-
 }
 
 ?>
