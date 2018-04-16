@@ -9,22 +9,17 @@
 							<div class="col-md-8 col-sm-12 col-xs-12">
 								<div class="title-in">
 									<div class="cate">
-										<span class="blue">
-											<a href="#">Sci-fi</a>
-										</span>
-										<span class="yell">
-											<a href="#">Action</a>
-										</span>
-										<span class="orange">
-											<a href="#">advanture</a>
-										</span>
+										<?php $colors = array("blue", "yell", "orange"); ?>
+										<?php $i = 0; ?>
+										<?php foreach (explode("/", $movie->genre) as $genre) : ?>
+										<?php echo '<span class="' . $colors[$i] . '">' . $genre . '</span>'; ?>
+										<?php $i++; ?>
+										<?php endforeach; ?>
 									</div>
 									<h1>
 										<?php echo '<a href="#">' . $movie->engname . '<br/><span>' . $movie->thainame . '</span></a>'; ?>
 									</h1>
 									<div class="social-btn">
-										<a href="#" class="parent-btn">
-											<i class="ion-play"></i> Watch Trailer</a>
 										<a href="#" class="parent-btn">
 											<i class="ion-heart"></i> Add to Favorite</a>
 										<div class="hover-bnt">
@@ -51,17 +46,17 @@
 											<i class="ion-android-star"></i>
 											<span>7.4</span> /10</p>
 										<ul class="mv-infor">
-											<li> Run Time: 2h21’ </li>
-											<li> Rated: PG-13 </li>
-											<li> Release: 1 May 2015</li>
+											<li> ความยาว : <?php echo $movie->runtime; ?> นาที</li>
+											<li> ความเหมาะสม : <?php echo $movie->age; ?> </li>
+											<li> วันที่เข้าฉาย : <?php echo $movie->date; ?></li>
 										</ul>
 									</div>
 									<div class="btn-transform transform-vertical">
 										<div>
-											<a href="#" class="item item-1 redbtn">more detail</a>
+											<a href="<?php echo site_url('MovieSingleController?id=' . $movie->id) ?>" class="item item-1 redbtn">เพิ่มเติม</a>
 										</div>
 										<div>
-											<a href="#" class="item item-2 redbtn hvrbtn">more detail</a>
+											<a href="<?php echo site_url('MovieSingleController?id=' . $movie->id) ?>" class="item item-2 redbtn hvrbtn">เพิ่มเติม</a>
 										</div>
 									</div>
 								</div>
@@ -112,7 +107,7 @@
 												<?php echo '<img src="data:image/jpeg;base64,' . base64_encode($movie->poster) . '"/>'; ?>
 											</div>
 											<div class="hvr-inner">
-												<a href="#"> Read more
+												<a href="<?php echo site_url('MovieSingleController?id=' . $movie->id) ?>"> เพิ่มเติม
 													<i class="ion-android-arrow-dropright"></i>
 												</a>
 											</div>
@@ -176,7 +171,7 @@
 					<h4 class="sb-title">Box Office</h4>
 					<?php foreach ($movies as $movie) : ?>
 						<div class="celeb-item">
-							<a href="#">
+							<a href="<?php echo site_url('MovieSingleController?id=' . $movie->id) ?>">
 								<?php echo '<img width="50" src="data:image/jpeg;base64,' . base64_encode($movie->poster) . '"/>'; ?>
 							</a>
 							<div class="celeb-author">

@@ -120,7 +120,7 @@
 															</div>
 															<div class="sb-it">
 																<h6>ความยาว :</h6>
-																<?php echo '<p>' . $movie->runtime . '</p>'; ?>
+																<?php echo '<p>' . $movie->runtime . ' นาที</p>'; ?>
 															</div>
 															<div class="sb-it">
 																<h6>ความเหมาะสม :</h6>

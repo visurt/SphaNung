@@ -3,10 +3,10 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="hero-ct">
-					<h1> movie listing</h1>
+					<h1> all movies</h1>
 					<ul class="breadcumb">
-						<li class="active"><a href="#">Home</a></li>
-						<li> <span class="ion-ios-arrow-right"></span> movie listing</li>
+						<li class="active"><a href="<?php echo site_url('HomeController') ?>">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span> all movies</li>
 					</ul>
 				</div>
 			</div>

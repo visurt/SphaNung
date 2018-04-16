@@ -153,10 +153,7 @@
 							</a>
 							<ul class="dropdown-menu level1">
 								<li>
-									<a href="<?php echo site_url('MovieListController') ?>">movie listing</a>
-								</li>
-								<li class="it-last">
-									<a href="<?php echo site_url('MovieSingleController') ?>">movie single</a>
+									<a href="<?php echo site_url('MovieListController') ?>">all movies</a>
 								</li>
 							</ul>
 						</li>
