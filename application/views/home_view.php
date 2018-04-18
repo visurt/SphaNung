@@ -107,7 +107,7 @@
 												<?php echo '<img src="data:image/jpeg;base64,' . base64_encode($movie->poster) . '"/>'; ?>
 											</div>
 											<div class="hvr-inner">
-												<a href="<?php echo site_url('MovieSingleController?id=' . $movie->id) ?>"> เพิ่มเติม
+												<a href="<?php echo site_url('MovieSingleController/detail/' . $movie->id) ?>"> เพิ่มเติม
 													<i class="ion-android-arrow-dropright"></i>
 												</a>
 											</div>
@@ -171,7 +171,7 @@
 					<h4 class="sb-title">Box Office</h4>
 					<?php foreach ($movies as $movie) : ?>
 						<div class="celeb-item">
-							<a href="<?php echo site_url('MovieSingleController?id=' . $movie->id) ?>">
+							<a href="<?php echo site_url('MovieSingleController/detail/' . $movie->id) ?>">
 								<?php echo '<img width="50" src="data:image/jpeg;base64,' . base64_encode($movie->poster) . '"/>'; ?>
 							</a>
 							<div class="celeb-author">

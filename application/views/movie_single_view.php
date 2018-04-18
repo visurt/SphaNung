@@ -1,8 +1,4 @@
-<?php if (isset($_GET['id'])) : ?>
-<?php foreach ($movies as $movie) : ?>
-<?php foreach ($trailers as $trailer) : ?>
-<?php if ($movie->id == $_GET['id']) : ?>
-<?php if ($movie->trailerid == $trailer->id) : ?>
+<!-- <?php var_dump($movie) ?> -->
 	<div class="hero mv-single-hero">
 		<div class="container">
 			<div class="row">
@@ -47,8 +43,8 @@
 						<div class="movie-rate">
 							<div class="rate">
 								<i class="ion-android-star"></i>
-								<p><span>8.1</span> /10<br>
-									<span class="rv">56 Reviews</span>
+								<p><span><?=$average_scores?> </span> /10<br>
+									<span class="rv"><?=$total_reviewer?> Reviews</span>
 								</p>
 							</div>
 							<div class="rate-star">
@@ -150,10 +146,6 @@
 													<option value="date">Release date Ascending</option>
 												</select>
 											</div>
-											
-											<?php foreach ($reviews as $review) : ?>
-											<?php foreach ($pages as $page) : ?>
-											<?php if ($review->movieid == $movie->id && $review->pageid == $page->id) : ?>
 											<div class="mv-user-review-item">
 												<div class="user-infor">
 													<?php echo '<img src=data:image/jpeg;base64,' . base64_encode($page->logo) . '>'; ?>
@@ -176,9 +168,6 @@
 												</div>
 												<?php echo '<p>' . $review->rlong . '</p>'; ?>
 											</div>
-											<?php	endif; ?>
-											<?php endforeach; ?>
-											<?php endforeach; ?>
 
 											<div class="topbar-filter">
 												<label>Reviews per page:</label>
@@ -209,8 +198,3 @@
 			</div>
 		</div>
 	</div>
-<?php	endif; ?>
-<?php	endif; ?>
-<?php endforeach; ?>
-<?php endforeach; ?>
-<?php	endif; ?>

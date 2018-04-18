@@ -17,13 +17,13 @@
   <meta name="format-detection" content="telephone-no">
 
   <!-- CSS files -->
-  <link rel="stylesheet" href="../assets/css/plugins.css">
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="<?=base_url('assets/css/plugins.css')?>">
+  <link rel="stylesheet" href="<?=base_url('assets/css/style.css')?>">
 </head>
 <body>
 <!-- preloading -->
 <div id="preloader">
-		<img class="logo" src="../assets/images/logo1.png" alt="" width="119" height="58">
+		<img class="logo" src="<?=base_url('assets/images/logo1.png')?>" alt="" width="119" height="58">
 		<div id="status">
 			<span></span>
 			<span></span>
@@ -132,7 +132,7 @@
 						</div>
 					</div>
 					<a href="<?php echo site_url('HomeController') ?>">
-						<img class="logo" src="../assets/images/logo1.png" alt="" width="119" height="58">
+						<img class="logo" src="assets/images/logo1.png" alt="" width="119" height="58">
 					</a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->

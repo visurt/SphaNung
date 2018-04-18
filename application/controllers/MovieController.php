@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class MovieController extends CI_Controller
+include 'BaseController.php';
+
+class MovieController extends BaseController
 {
   public function render($view)
   {
@@ -10,6 +12,9 @@ class MovieController extends CI_Controller
     $data['trailers'] = $this->MovieModel->getTrailer();
     $data['reviews'] = $this->MovieModel->getReview();
     $data['pages'] = $this->MovieModel->getPage();
+
+    $this->load->model('ReviewStarModel');
+    
 
     $this->load->view('header');
     $this->load->view($view, $data);
