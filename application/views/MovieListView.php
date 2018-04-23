@@ -36,7 +36,7 @@
 							<div class="movie-item-style-2 movie-item-style-1">
 							<?php echo '<img height="414" width="270" src="data:image/jpeg;base64,' . base64_encode($movie->poster) . '"/>'; ?>
 								<div class="hvr-inner">
-												<a  href="../assets/moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												<a  href="<?php echo site_url('MovieSingleController?id=' . $movie->id) ?>"> เพิ่มเติม <i class="ion-android-arrow-dropright"></i> </a>
 											</div>
 								<div class="mv-item-infor">
 									<h6><a href="#">oblivion</a></h6>

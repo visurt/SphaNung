@@ -25,6 +25,17 @@ class MovieModel extends CI_Model
     $query = $this->db->get('pages');
     return $query->result();
   }
+
+  public function insertReview()
+  {
+    $query = array(
+      'userid' => $this->input->post('userid'),
+      'score' => $this->input->post('score'),
+      'rshort' => $this->input->post('review'),
+      'movieid' => $this->input->post('movieid')
+    );
+    $this->db->insert("reviews", $query);
+  }
 }
 
 ?>
