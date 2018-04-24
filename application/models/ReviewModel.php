@@ -39,6 +39,19 @@ class ReviewModel extends CI_Model
   {
     return !is_null($this->id);
   }
+
+  public function insertReview()
+  {
+    date_default_timezone_set("Asia/Bangkok");
+    $query = array(
+      'id' => $this->input->post('id'),
+      'score' => $this->input->post('score'),
+      'rshort' => $this->input->post('review'),
+      'movieid' => $this->input->post('movieid'),
+      'date' => date('Y-m-d H:i:s')
+    );
+    $this->db->insert("reviews", $query);
+  }
   
 }
 

@@ -53,10 +53,10 @@
 									</div>
 									<div class="btn-transform transform-vertical">
 										<div>
-											<a href="<?php echo site_url('MovieSingleController?id=' . $movie->id) ?>" class="item item-1 redbtn">เพิ่มเติม</a>
+											<a href="<?php echo site_url('MovieSingleController/detail/' . $movie->id) ?>" class="item item-1 redbtn">เพิ่มเติม</a>
 										</div>
 										<div>
-											<a href="<?php echo site_url('MovieSingleController?id=' . $movie->id) ?>" class="item item-2 redbtn hvrbtn">เพิ่มเติม</a>
+											<a href="<?php echo site_url('MovieSingleController/detail/' . $movie->id) ?>" class="item item-2 redbtn hvrbtn">เพิ่มเติม</a>
 										</div>
 									</div>
 								</div>
