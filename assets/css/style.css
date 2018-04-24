@@ -6135,12 +6135,12 @@ ul {
   align-items: inherit;
 }
 .movie-single .movie-single-ct .tab.review .mv-user-review-item .user-infor img {
-  margin-right: 30px;
+  margin-right: 20px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  width: 42px;
-  height: 42px;
+  width: 75px;
+  height: 75px;
 }
 .movie-single .movie-single-ct .mvsingle-item {
   display: -webkit-flex;

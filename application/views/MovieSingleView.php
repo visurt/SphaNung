@@ -10,7 +10,7 @@
 		<a href="#" class="close">x</a>
 		<h3>Write Review</h3>
 		<form method="post" action="ReviewController">
-			<input type="hidden" name="movieid" value="<?php $movie->id ?>" />
+			<?php echo '<input type="hidden" name="movieid" value=' . $movie->id . '"/>' ?>
 			<div class="row">
 				<label for=""> User ID:
 					<input type="text" name="userid" required="required"/>
@@ -184,6 +184,35 @@
 												<?php echo '<img src=data:image/jpeg;base64,' . base64_encode($page->logo) . '>'; ?>
 												<div>
 													<?php echo '<h3>' . $page->name . '</h3>'; ?>
+													<div class="no-star">
+														<i class="ion-android-star"></i>
+														<i class="ion-android-star"></i>
+														<i class="ion-android-star"></i>
+														<i class="ion-android-star"></i>
+														<i class="ion-android-star"></i>
+														<i class="ion-android-star"></i>
+														<i class="ion-android-star"></i>
+														<i class="ion-android-star"></i>
+														<i class="ion-android-star"></i>
+														<i class="ion-android-star last"></i>
+													</div>
+													<?php echo '<p class="time"> @ ' . $review->date . '</p>'; ?>
+												</div>
+											</div>
+											<?php echo '<p>' . $review->rshort . '</p>'; ?>
+										</div>
+										<?php	endif; ?>
+										<?php endforeach; ?>
+										<?php endforeach; ?>
+
+										<?php foreach ($reviews as $review) : ?>
+										<?php foreach ($users as $user) : ?>
+										<?php if ($review->movieid == $movie->id && $review->userid == $user->id) : ?>
+										<div class="mv-user-review-item">
+											<div class="user-infor">
+												<?php echo '<img src=data:image/jpeg;base64,' . base64_encode($user->pic) . '>'; ?>
+												<div>
+													<?php echo '<h3>' . $user->name . '</h3>'; ?>
 													<div class="no-star">
 														<i class="ion-android-star"></i>
 														<i class="ion-android-star"></i>

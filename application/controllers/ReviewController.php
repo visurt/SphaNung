@@ -8,7 +8,7 @@ class ReviewController extends CI_Controller
     echo $_POST["movieid"];
     $this->load->model('MovieModel');
     $this->MovieModel->insertReview();
-    // header('Location: ' . $_SERVER['HTTP_REFERER']);
-    // exit;
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit;
   }
 }

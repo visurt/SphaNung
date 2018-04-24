@@ -10,6 +10,7 @@ class MovieController extends CI_Controller
     $data['trailers'] = $this->MovieModel->getTrailer();
     $data['reviews'] = $this->MovieModel->getReview();
     $data['pages'] = $this->MovieModel->getPage();
+    $data['users'] = $this->MovieModel->getUser();
 
     $this->load->view('header');
     $this->load->view($view, $data);

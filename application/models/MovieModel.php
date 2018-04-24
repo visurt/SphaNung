@@ -26,13 +26,21 @@ class MovieModel extends CI_Model
     return $query->result();
   }
 
+  public function getUser()
+  {
+    $query = $this->db->get('users');
+    return $query->result();
+  }
+
   public function insertReview()
   {
+    date_default_timezone_set("Asia/Bangkok");
     $query = array(
       'userid' => $this->input->post('userid'),
       'score' => $this->input->post('score'),
       'rshort' => $this->input->post('review'),
-      'movieid' => $this->input->post('movieid')
+      'movieid' => $this->input->post('movieid'),
+      'date' => date('Y-m-d H:i:s')
     );
     $this->db->insert("reviews", $query);
   }
