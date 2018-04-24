@@ -4,7 +4,7 @@
 <?php if ($movie->id == $_GET['id']) : ?>
 <?php if ($movie->trailerid == $trailer->id) : ?>
 
-<!--signup form popup-->
+<!--write review form popup-->
 <div class="login-wrapper" id="review-content">
 	<div class="login-content">
 		<a href="#" class="close">x</a>
@@ -31,7 +31,7 @@
 			</div>
 		</form>
 	</div>
-</div> <!--end of signup form popup-->
+</div> <!--end of write review form popup-->
 <div class="hero mv-single-hero">
 	<div class="container">
 		<div class="row">
@@ -210,7 +210,7 @@
 										<?php if ($review->movieid == $movie->id && $review->userid == $user->id) : ?>
 										<div class="mv-user-review-item">
 											<div class="user-infor">
-												<?php echo '<img src=data:image/jpeg;base64,' . base64_encode($user->pic) . '>'; ?>
+												<?php echo '<img src=data:image/jpeg;base64,' . base64_encode($user->picture) . '>'; ?>
 												<div>
 													<?php echo '<h3>' . $user->name . '</h3>'; ?>
 													<div class="no-star">
