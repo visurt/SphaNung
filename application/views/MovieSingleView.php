@@ -4,6 +4,7 @@
 <?php if ($movie->id == $_GET['id']) : ?>
 <?php if ($movie->trailerid == $trailer->id) : ?>
 
+<?php if (isset($_SESSION['userinfo'])) : ?>
 <!--write review form popup-->
 <div class="login-wrapper" id="review-content">
 	<div class="login-content">
@@ -28,6 +29,21 @@
 		</form>
 	</div>
 </div> <!--end of write review form popup-->
+<?php else : ?>
+<div class="login-wrapper" id="review-content">
+	<div class="login-content">
+		<a href="#" class="close">x</a>
+		
+			<div class="row">
+				<label for=""> Please Login..
+				</label>
+			</div>
+			
+		</form>
+	</div>
+</div> <!--end of write review form popup-->
+<?php endif; ?>
+
 <div class="hero mv-single-hero">
 	<div class="container">
 		<div class="row">
@@ -68,8 +84,8 @@
 					<div class="movie-rate">
 						<div class="rate">
 							<i class="ion-android-star"></i>
-							<p><span>8.1</span> /10<br>
-								<span class="rv">56 Reviews</span>
+							<p><span><?php echo $avg ?></span> /100<br>
+								<span class="rv"><?php echo $count ?> Reviews</span>
 							</p>
 						</div>
 						<div class="rate-star">
