@@ -114,30 +114,37 @@
 										<div class="col-md-8 col-sm-12 col-xs-12">
 											<?php echo '<p>' . $movie->short . '</p>'; ?>
 											<div class="title-hd-sm">
-												<h4>Top reviews</h4>
-												<a href="#" class="time">See All 56 Reviews <i class="ion-ios-arrow-right"></i></a>
+												<h4>Your review</h4>
+												<a href="#" class="time">See All <?php echo $count ?> Reviews <i class="ion-ios-arrow-right"></i></a>
 											</div>
-											<!-- movie user review -->
-											<div class="mv-user-review-item">
-												<h3>Best Marvel movie in my opinion</h3>
-												<div class="no-star">
-													<i class="ion-android-star"></i>
-													<i class="ion-android-star"></i>
-													<i class="ion-android-star"></i>
-													<i class="ion-android-star"></i>
-													<i class="ion-android-star"></i>
-													<i class="ion-android-star"></i>
-													<i class="ion-android-star"></i>
-													<i class="ion-android-star"></i>
-													<i class="ion-android-star"></i>
-													<i class="ion-android-star last"></i>
-												</div>
-												<p class="time">
-													17 December 2016 by <a href="#"> hawaiipierson</a>
-												</p>
-												<p>This is by far one of my favorite movies from the MCU. The introduction of new Characters both good and bad also makes the movie more exciting. giving the characters more of a back story can also help audiences relate more to different characters better, and it connects a bond between the audience and actors or characters. Having seen the movie three times does not bother me here as it is as thrilling and exciting every time I am watching it. In other words, the movie is by far better than previous movies (and I do love everything Marvel), the plotting is splendid (they really do out do themselves in each film, there are no problems watching it more than once.</p>
-											</div>
+											<?php foreach ($reviews as $review) : ?>
+											<?php foreach ($users as $user) : ?>
+											<?php if ($user->id == $_SESSION['userinfo']['id'] && $review->userid == $user->id && $review->movieid == $_GET['id']) : ?>
+												<div class="mv-user-review-item">
+													<?php echo '<h3>' . $user->name . '</h3>' ?>
+													<div class="no-star">
+														<?php $score = floor($review->score / 10) ?>
+														<?php for ($x = $score; $x > 0; $x--) : ?>
+															<i class="ion-android-star"></i>
+														<?php endfor; ?>
+														<?php if ($review->score % 10 != 0) : ?>
+															<i class="ion-android-star-half"></i>
+															<?php for ($y = 10 - $score - 1; $y > 0; $y--) : ?>
+																<i class="ion-android-star last"></i>
+															<?php endfor; ?>
+														<?php else : ?>
+															<?php for ($y = 10 - $score; $y > 0; $y--) : ?>
+																<i class="ion-android-star last"></i>
+															<?php endfor; ?>
+														<?php endif; ?>
 													</div>
+													<?php echo '<p class="time"> @ ' . $review->date . '</p>'; ?>
+													<?php echo '<p>' . $review->rshort . '</p>'; ?>
+													</div>
+											<?php endif; ?>
+											<?php endforeach; ?>
+											<?php endforeach; ?>
+										</div>
 													<div class="col-md-4 col-xs-12 col-sm-12">
 														<div class="sb-it">
 															<h6>ผู้กำกับ : </h6>
