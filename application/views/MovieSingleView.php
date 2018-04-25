@@ -176,7 +176,7 @@
 														<a href="#" class="redbtn reviewLink">Write Review</a>
 													</div>
 													<div class="topbar-filter">
-											<p>Found <span>56 reviews</span> in total</p>
+											<p>Found <span><?php echo $count ?> reviews</span> in total</p>
 											<label>Filter by:</label>
 											<select>
 												<option value="popularity">Popularity Descending</option>
@@ -197,16 +197,20 @@
 												<div>
 													<?php echo '<h3>' . $page->name . '</h3>'; ?>
 													<div class="no-star">
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star last"></i>
+														<?php $score = floor($review->score / 10) ?>
+														<?php for ($x = $score; $x > 0; $x--) : ?>
+															<i class="ion-android-star"></i>
+														<?php endfor; ?>
+														<?php if ($review->score % 10 != 0) : ?>
+															<i class="ion-android-star-half"></i>
+															<?php for ($y = 10 - $score - 1; $y > 0; $y--) : ?>
+																<i class="ion-android-star last"></i>
+															<?php endfor; ?>
+														<?php else : ?>
+															<?php for ($y = 10 - $score; $y > 0; $y--) : ?>
+																<i class="ion-android-star last"></i>
+															<?php endfor; ?>
+														<?php endif; ?>
 													</div>
 													<?php echo '<p class="time"> @ ' . $review->date . '</p>'; ?>
 												</div>
@@ -226,16 +230,20 @@
 												<div>
 													<?php echo '<h3>' . $user->name . '</h3>'; ?>
 													<div class="no-star">
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star last"></i>
+														<?php $score = floor($review->score / 10) ?>
+														<?php for ($x = $score; $x > 0; $x--) : ?>
+															<i class="ion-android-star"></i>
+														<?php endfor; ?>
+														<?php if ($review->score % 10 != 0) : ?>
+															<i class="ion-android-star-half"></i>
+															<?php for ($y = 10 - $score - 1; $y > 0; $y--) : ?>
+																<i class="ion-android-star last"></i>
+															<?php endfor; ?>
+														<?php else : ?>
+															<?php for ($y = 10 - $score; $y > 0; $y--) : ?>
+																<i class="ion-android-star last"></i>
+															<?php endfor; ?>
+														<?php endif; ?>
 													</div>
 													<?php echo '<p class="time"> @ ' . $review->date . '</p>'; ?>
 												</div>
