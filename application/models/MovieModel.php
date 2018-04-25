@@ -57,6 +57,42 @@ class MovieModel extends CI_Model
 
     $this->db->query($insert_image);
   }
+
+  public function login()
+  {
+    $username = $this->input->post('username-l');
+    $password = $this->input->post('password-l');
+
+    $sql = "SELECT id,username,password,name,picture,imagename FROM users WHERE username='{$username}' LIMIT 1";
+    $result = $this->db->query($sql);
+    $row = $result->row();
+
+    if ($result->num_rows() === 1) {
+      if ($row->password === $password) {
+        $session_data = array(
+          'id' => $row->id,
+          'username' => $row->username,
+          'name' => $row->name,
+          'picture' => $row->picture,
+          'imagename' => $row->imagename
+        );
+        $this->set_session($session_data);
+      }
+    }
+  }
+
+  public function set_session($session_data)
+  {
+    $this->load->library('session');
+    $sess_data = array(
+      'id' => $session_data['id'],
+      'username' => $session_data['username'],
+      'name' => $session_data['name'],
+      'picture' => $session_data['picture'],
+      'imagename' => $session_data['imagename']
+    );
+    $_SESSION['userinfo'] = $sess_data;
+  }
 }
 
 ?>

@@ -5,6 +5,7 @@ class MovieController extends CI_Controller
 {
   public function render($view)
   {
+    $this->load->library('session');
     $this->load->model('MovieModel');
     $data['movies'] = $this->MovieModel->getMovie();
     $data['trailers'] = $this->MovieModel->getTrailer();

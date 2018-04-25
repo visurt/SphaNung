@@ -35,19 +35,15 @@
 	<div class="login-content">
 		<a href="#" class="close">x</a>
 		<h3>Login</h3>
-		<form method="post" action="login.php">
+		<form method="post" action="LoginController">
 			<div class="row">
-				<label for="username">
-					Name:
-					<input type="text" name="username" id="username" placeholder="Hugh Jackman" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required"
-					/>
+				<label for=""> Username:
+					<input type="text" name="username-l" id="username-l" required="required" />
 				</label>
 			</div>
 			<div class="row">
-				<label for="password">
-					Password:
-					<input type="password" name="password" id="password" placeholder="******" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
-						required="required" />
+				<label for=""> Password:
+					<input type="password" name="password-l" id="password-l" required="required" />
 				</label>
 			</div>
 			<div class="row">
@@ -156,6 +152,7 @@
 					<input type="text" placeholder="Search Me">
 				</div>
 
+				<?php if (!isset($_SESSION['userinfo'])) : ?>
 				<ul class="nav navbar-nav flex-child-menu menu-right">
 					<li class="loginLink">
 						<a href="#">LOG In</a>
@@ -165,6 +162,16 @@
 					</li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
+			<?php else : ?>
+			<ul class="nav navbar-nav flex-child-menu menu-right">
+				<li class="">
+					<?php echo '<a href="#">' . $_SESSION['userinfo']['name'] . ' </a>' ?>
+				</li>
+				<li class="btn">
+					<a href="LogOutController" class="redbtn">Log out</a>
+				</li>
+			</ul>
+			<?php endif; ?>
 		</nav>
 	</div>
 </header>

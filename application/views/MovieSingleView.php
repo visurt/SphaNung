@@ -11,11 +11,7 @@
 		<h3>Write Review</h3>
 		<form method="post" action="ReviewController">
 			<?php echo '<input type="hidden" name="movieid" value=' . $movie->id . '"/>' ?>
-			<div class="row">
-				<label for=""> User ID:
-					<input type="text" name="userid" required="required"/>
-				</label>
-			</div>
+			<?php echo '<input type="hidden" name="userid" value=' . $_SESSION['userinfo']['id'] . '"/>' ?>
 			<div class="row">
 				<label for=""> Rating:
 					<input type="text" name="score" required="required"/>
