@@ -141,7 +141,7 @@
 						</a>
 						<ul class="dropdown-menu level1">
 							<li>
-								<a href="<?php echo site_url('MovieListController') ?>">all movies</a>
+								<a href="<?php echo site_url('SearchController?search=') ?>">all movies</a>
 							</li>
 						</ul>
 					</li>

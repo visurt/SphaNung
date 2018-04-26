@@ -74,7 +74,7 @@
 				<div class="sidebar">
 					<div class="searh-form">
 						<h4 class="sb-title">Search for movie</h4>
-						<form class="form-style-1" action="#">
+						<form method="get" class="form-style-1" action="SearchController">
 							<div class="row">
 								<div class="col-md-12 form-it">
 									<label>Movie name</label>
@@ -87,10 +87,10 @@
 											name="skills" multiple="" class="ui fluid dropdown">
 											<option value="">Enter to filter genres</option>
 											<option value="Action1">Action 1</option>
-					                        <option value="Action2">Action 2</option>
-					                        <option value="Action3">Action 3</option>
-					                        <option value="Action4">Action 4</option>
-					                        <option value="Action5">Action 5</option>
+											<option value="Action2">Action 2</option>
+											<option value="Action3">Action 3</option>
+											<option value="Action4">Action 4</option>
+											<option value="Action5">Action 5</option>
 										</select>
 									</div>	
 								</div>
