@@ -44,7 +44,11 @@
 									<div class="mv-details">
 										<p>
 											<i class="ion-android-star"></i>
-											<span>7.4</span> /10</p>
+											<?php foreach ($scores as $score) : ?>
+												<?php if ($score['movieid'] == $movie->id) : ?>
+													<?php echo '<span>' . $score['avg'] . '</span> /100</p>' ?>
+												<?php endif; ?>
+											<?php endforeach; ?>
 										<ul class="mv-infor">
 											<li> ความยาว : <?php echo $movie->runtime; ?> นาที</li>
 											<li> ความเหมาะสม : <?php echo $movie->age; ?> </li>
@@ -114,7 +118,12 @@
 											<div class="title-in">
 												<p>
 													<i class="ion-android-star"></i>
-													<span>7.4</span> /10
+													<?php foreach ($scores as $score) : ?>
+												<?php if ($score['movieid'] == $movie->id) : ?>
+													<?php echo '<span>' . $score['avg'] . '</span> /100' ?>
+												<?php endif; ?>
+											<?php endforeach; ?>
+													<!-- <span>7.4</span> /10 -->
 												</p>
 											</div>
 										</div>

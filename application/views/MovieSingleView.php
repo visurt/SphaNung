@@ -84,7 +84,11 @@
 					<div class="movie-rate">
 						<div class="rate">
 							<i class="ion-android-star"></i>
-							<p><span><?php echo $avg ?></span> /100<br>
+							<?php foreach ($scores as $score) : ?>
+												<?php if ($score['movieid'] == $movie->id) : ?>
+													<?php echo '<p><span>' . $score['avg'] . '</span> /100<br/>' ?>
+												<?php endif; ?>
+											<?php endforeach; ?>
 								<span class="rv"><?php echo $count ?> Reviews</span>
 							</p>
 						</div>
@@ -113,37 +117,39 @@
 									<div class="row">
 										<div class="col-md-8 col-sm-12 col-xs-12">
 											<?php echo '<p>' . $movie->short . '</p>'; ?>
-											<div class="title-hd-sm">
-												<h4>Your review</h4>
-												<a href="#" class="time">See All <?php echo $count ?> Reviews <i class="ion-ios-arrow-right"></i></a>
-											</div>
-											<?php foreach ($reviews as $review) : ?>
-											<?php foreach ($users as $user) : ?>
-											<?php if ($user->id == $_SESSION['userinfo']['id'] && $review->userid == $user->id && $review->movieid == $_GET['id']) : ?>
-												<div class="mv-user-review-item">
-													<?php echo '<h3>' . $user->name . '</h3>' ?>
-													<div class="no-star">
-														<?php $score = floor($review->score / 10) ?>
-														<?php for ($x = $score; $x > 0; $x--) : ?>
-															<i class="ion-android-star"></i>
-														<?php endfor; ?>
-														<?php if ($review->score % 10 != 0) : ?>
-															<i class="ion-android-star-half"></i>
-															<?php for ($y = 10 - $score - 1; $y > 0; $y--) : ?>
-																<i class="ion-android-star last"></i>
+											<?php if (isset($_SESSION['userinfo'])) : ?>
+												<div class="title-hd-sm">
+													<h4>Your review</h4>
+													<a href="#" class="time">See All <?php echo $count ?> Reviews <i class="ion-ios-arrow-right"></i></a>
+												</div>
+												<?php foreach ($reviews as $review) : ?>
+												<?php foreach ($users as $user) : ?>
+												<?php if ($user->id == $_SESSION['userinfo']['id'] && $review->userid == $user->id && $review->movieid == $_GET['id']) : ?>
+													<div class="mv-user-review-item">
+														<?php echo '<h3>' . $user->name . '</h3>' ?>
+														<div class="no-star">
+															<?php $score = floor($review->score / 10) ?>
+															<?php for ($x = $score; $x > 0; $x--) : ?>
+																<i class="ion-android-star"></i>
 															<?php endfor; ?>
-														<?php else : ?>
-															<?php for ($y = 10 - $score; $y > 0; $y--) : ?>
-																<i class="ion-android-star last"></i>
-															<?php endfor; ?>
-														<?php endif; ?>
-													</div>
-													<?php echo '<p class="time"> @ ' . $review->date . '</p>'; ?>
-													<?php echo '<p>' . $review->rshort . '</p>'; ?>
-													</div>
+															<?php if ($review->score % 10 != 0) : ?>
+																<i class="ion-android-star-half"></i>
+																<?php for ($y = 10 - $score - 1; $y > 0; $y--) : ?>
+																	<i class="ion-android-star last"></i>
+																<?php endfor; ?>
+															<?php else : ?>
+																<?php for ($y = 10 - $score; $y > 0; $y--) : ?>
+																	<i class="ion-android-star last"></i>
+																<?php endfor; ?>
+															<?php endif; ?>
+														</div> <!-- end class "no-star" -->
+														<?php echo '<p class="time"> @ ' . $review->date . '</p>'; ?>
+														<?php echo '<p>' . $review->rshort . '</p>'; ?>
+													</div> <!-- end class mv-user-review-item -->
+												<?php endif; ?>
+												<?php endforeach; ?>
+												<?php endforeach; ?>
 											<?php endif; ?>
-											<?php endforeach; ?>
-											<?php endforeach; ?>
 										</div>
 													<div class="col-md-4 col-xs-12 col-sm-12">
 														<div class="sb-it">

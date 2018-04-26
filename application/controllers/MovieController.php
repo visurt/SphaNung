@@ -12,8 +12,8 @@ class MovieController extends CI_Controller
     $data['reviews'] = $this->MovieModel->getReview();
     $data['pages'] = $this->MovieModel->getPage();
     $data['users'] = $this->MovieModel->getUser();
+    $data['scores'] = $this->MovieModel->averageScore();
     if (isset($_GET['id'])) {
-      $data['avg'] = $this->MovieModel->averageScore();
       $data['count'] = $this->MovieModel->countReview();
     }
 

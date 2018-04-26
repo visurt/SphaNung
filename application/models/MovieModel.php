@@ -96,16 +96,13 @@ class MovieModel extends CI_Model
 
   public function averageScore()
   {
-    $query = $this->db->query("SELECT round(AVG(score),0) AS avg FROM reviews WHERE movieid='{$_GET['id']}'");
-    if ($query->num_rows() == 0) {
-      return 0;
-    }
-    return $query->row()->avg;
+    $query = $this->db->query("SELECT movieid, round(AVG(score),0) AS avg FROM reviews group by movieid");
+    return json_decode(json_encode($query->result()), true);
   }
 
   public function countReview()
   {
-    $query = $this->db->query("SELECT count(*) AS count FROM reviews WHERE movieid ='{$_GET['id']}'");
+    $query = $this->db->query(" SELECT count(*) as count FROM reviews WHERE movieid = '{$_GET['id']}' ");
     if ($query->num_rows() == 0) {
       return 0;
     }
