@@ -13,8 +13,12 @@ class MovieController extends CI_Controller
     $data['pages'] = $this->MovieModel->getPage();
     $data['users'] = $this->MovieModel->getUser();
     $data['scores'] = $this->MovieModel->averageScore();
+    $data['grossing'] = $this->MovieModel->getGrossing();
     if (isset($_GET['id'])) {
       $data['count'] = $this->MovieModel->countReview();
+    }
+    if (isset($_GET['search'])) {
+      $data['searchs'] = $this->MovieModel->searchResult();
     }
 
     $this->load->view('header');

@@ -46,7 +46,7 @@
 											<i class="ion-android-star"></i>
 											<?php foreach ($scores as $score) : ?>
 												<?php if ($score['movieid'] == $movie->id) : ?>
-													<?php echo '<span>' . $score['avg'] . '</span> /100</p>' ?>
+													<?php echo '<span>' . $score['avg'] / 10 . '</span> /10</p>' ?>
 												<?php endif; ?>
 											<?php endforeach; ?>
 										<ul class="mv-infor">
@@ -120,10 +120,9 @@
 													<i class="ion-android-star"></i>
 													<?php foreach ($scores as $score) : ?>
 												<?php if ($score['movieid'] == $movie->id) : ?>
-													<?php echo '<span>' . $score['avg'] . '</span> /100' ?>
+													<?php echo '<span>' . $score['avg'] / 10 . '</span> /10' ?>
 												<?php endif; ?>
 											<?php endforeach; ?>
-													<!-- <span>7.4</span> /10 -->
 												</p>
 											</div>
 										</div>
@@ -178,7 +177,9 @@
 			<div class="sidebar">
 				<div class="celebrities">
 					<h4 class="sb-title">Box Office</h4>
+					<?php foreach ($grossing as $gross) : ?>
 					<?php foreach ($movies as $movie) : ?>
+					<?php if ($gross->id == $movie->id) : ?>
 						<div class="celeb-item">
 							<a href="<?php echo site_url('MovieSingleController?id=' . $movie->id) ?>">
 								<?php echo '<img width="50" src="data:image/jpeg;base64,' . base64_encode($movie->poster) . '"/>'; ?>
@@ -187,9 +188,11 @@
 								<h6>
 									<?php echo '<a href="#">' . $movie->engname . '</a>' ?>
 								</h6>
-								<?php echo '<span>' . $movie->thainame . '</span>' ?>
+								<?php echo '<span>' . $movie->weekgross . ' ล้านบาท ( รายได้รวม ' . $movie->totalgross . ' ล้าน )</span>' ?>
 							</div>
 						</div>
+							<?php endif; ?>
+							<?php endforeach; ?>
 					<?php endforeach; ?>
 				</div>
 			</div>

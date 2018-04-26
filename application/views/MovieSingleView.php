@@ -86,7 +86,7 @@
 							<i class="ion-android-star"></i>
 							<?php foreach ($scores as $score) : ?>
 												<?php if ($score['movieid'] == $movie->id) : ?>
-													<?php echo '<p><span>' . $score['avg'] . '</span> /100<br/>' ?>
+													<?php echo '<p><span>' . $score['avg'] / 10 . '</span> /10<br/>' ?>
 												<?php endif; ?>
 											<?php endforeach; ?>
 								<span class="rv"><?php echo $count ?> Reviews</span>

@@ -108,6 +108,27 @@ class MovieModel extends CI_Model
     }
     return $query->row()->count;
   }
+
+  public function getGrossing()
+  {
+    $query = $this->db->query("SELECT id FROM movies WHERE weekgross != '' ORDER BY weekgross DESC LIMIT 5");
+    return $query->result();
+  }
+
+  public function searchResult()
+  {
+    $query = $this->db->query("SELECT * FROM movies 
+                                WHERE engname LIKE '%{$_GET['search']}%' OR 
+                                thainame LIKE '%{$_GET['search']}%' OR 
+                                year LIKE '%{$_GET['search']}%' OR 
+                                short LIKE '%{$_GET['search']}%' OR 
+                                directer LIKE '%{$_GET['search']}%' OR 
+                                cast LIKE '%{$_GET['search']}%' OR 
+                                genre LIKE '%{$_GET['search']}%' OR 
+                                age LIKE '%{$_GET['search']}%'
+                                ");
+    return $query->result();
+  }
 }
 
 ?>

@@ -149,7 +149,9 @@
 
 				<!-- top search form -->
 				<div class="top-search">
-					<input type="text" placeholder="Search Me">
+					<form action="SearchController" method="get">
+						<input type="text" name="search" placeholder="Search Me"/>
+					</form> 
 				</div>
 
 				<?php if (!isset($_SESSION['userinfo'])) : ?>
