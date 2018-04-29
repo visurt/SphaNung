@@ -6078,6 +6078,9 @@ ul {
 .movie-single .movie-single-ct .movie-rate .rate-star i.ion-ios-star {
   color: #f5b50a;
 }
+.movie-single .movie-single-ct .movie-rate .rate-star i.ion-ios-star-half {
+  color: #f5b50a;
+}
 .movie-single .movie-single-ct .tab h3 {
   font-family: 'Dosis', sans-serif;
   font-size: 18px;

@@ -15,7 +15,7 @@
 			<?php echo '<input type="hidden" name="userid" value=' . $_SESSION['userinfo']['id'] . '"/>' ?>
 			<div class="row">
 				<label for=""> Rating:
-					<input type="text" name="score" required="required"/>
+					<input type="text" name="score" required="required" placeholder="1 - 100"/>
 				</label>
 			</div>
 			<div class="row">
@@ -93,8 +93,31 @@
 							</p>
 						</div>
 						<div class="rate-star">
-							<p>Rate This Movie:  </p>
-							<i class="ion-ios-star"></i>
+							<p>Movie Rating: </p>
+							<?php foreach ($scores as $score) : ?>
+							<?php if ($score['movieid'] == $movie->id) : ?>
+								<?php for ($x = floor($score['avg'] / 10); $x > 0; $x--) : ?>
+									<i class="ion-ios-star"></i>
+								<?php endfor; ?>
+								<?php if ($score['avg'] % 10 >= 5) : ?>
+									<i class="ion-ios-star-half"></i>
+									<?php for ($y = 10 - floor($score['avg'] / 10) - 1; $y > 0; $y--) : ?>
+										<i class="ion-ios-star-outline"></i>
+									<?php endfor; ?>
+								<?php else : ?>
+								<?php for ($y = 10 - floor($score['avg'] / 10); $y > 0; $y--) : ?>
+										<i class="ion-ios-star-outline"></i>
+									<?php endfor; ?>
+								<?php endif; ?>
+							<?php endif; ?>
+							<?php endforeach; ?>
+
+
+
+
+
+
+							<!-- <i class="ion-ios-star"></i>
 							<i class="ion-ios-star"></i>
 							<i class="ion-ios-star"></i>
 							<i class="ion-ios-star"></i>
@@ -103,7 +126,7 @@
 							<i class="ion-ios-star-outline"></i>
 							<i class="ion-ios-star-outline"></i>
 							<i class="ion-ios-star-outline"></i>
-							<i class="ion-ios-star-outline"></i>
+							<i class="ion-ios-star-outline"></i> -->
 						</div>
 					</div>
 					<div class="movie-tabs">
