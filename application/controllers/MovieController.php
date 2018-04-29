@@ -20,6 +20,9 @@ class MovieController extends CI_Controller
     if (isset($_GET['search'])) {
       $data['searchs'] = $this->MovieModel->searchResult();
     }
+    if (isset($_GET['name']) || isset($_GET['genre']) || isset($_GET['from']) || isset($_GET['to'])) {
+      $data['advsearchs'] = $this->MovieModel->advanceSearch();
+    }
 
     $this->load->view('header');
     $this->load->view($view, $data);

@@ -9,11 +9,4 @@ class SearchController extends CI_Controller
     $MC = new MovieController();
     $MC->render('SearchView');
   }
-
-  public function searchSide()
-  {
-    require_once('MovieController.php');
-    $MC = new MovieController();
-    $MC->render('SearchView');
-  }
 }

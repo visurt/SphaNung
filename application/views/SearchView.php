@@ -18,7 +18,9 @@
 		<div class="row ipad-width">
 			<div class="col-md-8 col-sm-12 col-xs-12">
 				<div class="topbar-filter">
+				<?php if (!empty($searchs)) : ?>
 					<?php echo '<p>Found <span>' . count($searchs) . ' movies</span> in total</p>' ?>
+				<?php endif; ?>
 					<label>Sort by:</label>
 					<select>
 						<option value="popularity">Popularity Descending</option>
@@ -43,6 +45,24 @@
 								<?php echo '<h6><a href="' . site_url('MovieSingleController?id=' . $search->id) . ' ">' . $search->engname . '</a></h6>' ?>
 								<?php foreach ($scores as $score) : ?>
 											<?php if ($score['movieid'] == $search->id) : ?>
+												<?php echo '<p class="rate"><i class="ion-android-star"></i><span>' . $score['avg'] / 10 . '</span> /10</p>' ?>
+											<?php endif; ?>
+										<?php endforeach; ?>
+							</div>
+						</div>
+					<?php endforeach; ?>
+				<?php endif; ?>
+				<?php if (!empty($advsearchs)) : ?>
+				<?php foreach ($advsearchs as $advsearch) : ?>
+						<div class="movie-item-style-2 movie-item-style-1">
+						<?php echo '<img height="414" width="270" src="data:image/jpeg;base64,' . base64_encode($advsearch->poster) . '"/>'; ?>
+							<div class="hvr-inner">
+								<a  href="<?php echo site_url('MovieSingleController?id=' . $advsearch->id) ?>"> เพิ่มเติม <i class="ion-android-arrow-dropright"></i> </a>
+							</div>
+							<div class="mv-item-infor">
+								<?php echo '<h6><a href="' . site_url('MovieSingleController?id=' . $advsearch->id) . ' ">' . $advsearch->engname . '</a></h6>' ?>
+								<?php foreach ($scores as $score) : ?>
+											<?php if ($score['movieid'] == $advsearch->id) : ?>
 												<?php echo '<p class="rate"><i class="ion-android-star"></i><span>' . $score['avg'] / 10 . '</span> /10</p>' ?>
 											<?php endif; ?>
 										<?php endforeach; ?>
@@ -78,42 +98,34 @@
 							<div class="row">
 								<div class="col-md-12 form-it">
 									<label>Movie name</label>
-									<input type="text" placeholder="Enter keywords">
+									<input type="text" name="name" placeholder="Enter keywords">
 								</div>
 								<div class="col-md-12 form-it">
 									<label>Genres & Subgenres</label>
 									<div class="group-ip">
 										<select
-											name="skills" multiple="" class="ui fluid dropdown">
+											name="genre" multiple="" class="ui fluid dropdown">
 											<option value="">Enter to filter genres</option>
-											<option value="Action1">Action 1</option>
-											<option value="Action2">Action 2</option>
-											<option value="Action3">Action 3</option>
-											<option value="Action4">Action 4</option>
-											<option value="Action5">Action 5</option>
+											<option>แอ็คชัน</option>
+											<option>ผจญภัย</option>
 										</select>
 									</div>	
-								</div>
-								<div class="col-md-12 form-it">
-									<label>Rating Range</label>
-									<select>
-									  <option value="range">-- Select the rating range below --</option>
-									  <option value="saab">-- Select the rating range below --</option>
-									</select>
 								</div>
 								<div class="col-md-12 form-it">
 									<label>Release Year</label>
 									<div class="row">
 										<div class="col-md-6">
-											<select>
-											  <option value="range">From</option>
-											  <option value="number">10</option>
+											<select name="from">
+											  <option value="">From</option>
+											  <option>2017</option>
+												<option>2018</option>
 											</select>
 										</div>
 										<div class="col-md-6">
-											<select>
-											  <option value="range">To</option>
-											  <option value="number">20</option>
+											<select name="to">
+												<option value="">To</option>
+												<option>2017</option>
+												<option>2018</option>
 											</select>
 										</div>
 									</div>

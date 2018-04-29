@@ -129,6 +129,48 @@ class MovieModel extends CI_Model
                                 ");
     return $query->result();
   }
+
+  public function advanceSearch()
+  {
+    $isPrefix = false;
+    $str = "SELECT * FROM movies";
+    if (isset($_GET['name']) && $_GET['name'] != '') {
+      if ($isPrefix) {
+        $str .= " AND (engname LIKE '%{$_GET['name']}%' OR thainame LIKE '%{$_GET['name']}%')";
+      } else {
+        $str .= " WHERE (engname LIKE '%{$_GET['name']}%' OR thainame LIKE '%{$_GET['name']}%')";
+        $isPrefix = true;
+      }
+    }
+    if (isset($_GET['genre']) && $_GET['genre'] != '') {
+      if ($isPrefix) {
+        $str .= " AND genre LIKE '%{$_GET['genre']}%'";
+      } else {
+        $str .= " WHERE genre LIKE '%{$_GET['genre']}%'";
+        $isPrefix = true;
+      }
+
+    }
+    if (isset($_GET['from']) && $_GET['from'] != '') {
+      if ($isPrefix) {
+        $str .= " AND year >= {$_GET['from']}";
+      } else {
+        $str .= " WHERE year >= {$_GET['from']}";
+        $isPrefix = true;
+      }
+    }
+    if (isset($_GET['to']) && $_GET['to'] != '') {
+      if ($isPrefix) {
+        $str .= " AND year <= {$_GET['to']}";
+      } else {
+        $str .= " WHERE year <= {$_GET['to']}";
+        $isPrefix = true;
+      }
+    }
+
+    $query = $this->db->query($str);
+    return $query->result();
+  }
 }
 
 ?>
