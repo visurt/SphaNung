@@ -17,14 +17,15 @@
 										<?php endforeach; ?>
 									</div>
 									<h1>
-										<?php echo '<a href="#">' . $movie->engname . '<br/><span>' . $movie->thainame . '</span></a>'; ?>
+										<?php echo '<a href="MovieSingleController?id=' . $movie->id . '">' . $movie->engname . '<br/>' . $movie->thainame . '</a>' ?>
 									</h1>
+									<br/><br/>
 									<div class="social-btn">
 										<a href="#" class="parent-btn">
-											<i class="ion-heart"></i> Add to Favorite</a>
+											<i class="ion-heart"></i> เพิ่มลงในรายการโปรด</a>
 										<div class="hover-bnt">
 											<a href="#" class="parent-btn">
-												<i class="ion-android-share-alt"></i>share</a>
+												<i class="ion-android-share-alt"></i>แชร์</a>
 											<div class="hvr-item">
 												<a href="#" class="hvr-grow">
 													<i class="ion-social-facebook"></i>
@@ -67,7 +68,7 @@
 							</div>
 							<div class="col-md-4 col-sm-12 col-xs-12">
 								<div class="mv-img-2">
-									<a href="#">
+									<a href="MovieSingleController?id=<?php echo $movie->id ?>">
 										<?php echo '<img height="414" width="270" src="data:image/jpeg;base64,' . base64_encode($movie->poster) . '"/>'; ?>
 									</a>
 								</div>
@@ -83,21 +84,21 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="title-hd">
-				<h2>in theater</h2>
-				<a href="#" class="viewall">View all
+				<h2>ภาพยนตร์</h2>
+				<a href="SearchController?search=" class="viewall">ดูทั้งหมด
 					<i class="ion-ios-arrow-right"></i>
 				</a>
 			</div>
 			<div class="tabs">
 				<ul class="tab-links">
 					<li class="active">
-						<a href="#tab1-h2">#Popular</a>
+						<a href="#tab1-h2">#ล่าสุด</a>
 					</li>
 					<li>
-						<a href="#tab2-h2"> #Top rated </a>
+						<a href="#tab2-h2"> #คะแนนสูงสุด</a>
 					</li>
 					<li>
-						<a href="#tab3-h2"> #Most reviewed</a>
+						<a href="#tab3-h2"> #คนรีวิวมากสุด</a>
 					</li>
 				</ul>
 				<div class="tab-content">
@@ -141,10 +142,7 @@
 	<div class="row ipad-width">
 		<div class="col-md-9 col-sm-12 col-xs-12">
 			<div class="title-hd">
-				<h2>movie trailer</h2>
-				<a href="#" class="viewall">View all
-					<i class="ion-ios-arrow-right"></i>
-				</a>
+				<h2>ตัวอย่างภาพยนตร์</h2>
 			</div>
 			<div class="videos">
 				<div class="slider-for-2 video-ft">
@@ -176,7 +174,7 @@
 		<div class="col-md-3 col-sm-12 col-xs-12">
 			<div class="sidebar">
 				<div class="celebrities">
-					<h4 class="sb-title">Box Office</h4>
+					<h4 class="sb-title">อันดับภาพยนตร์ทําเงิน ประจําสัปดาห์</h4>
 					<?php foreach ($grossing as $gross) : ?>
 					<?php foreach ($movies as $movie) : ?>
 					<?php if ($gross->id == $movie->id) : ?>

@@ -3,10 +3,10 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="hero-ct">
-					<h1> search movies</h1>
+					<h1> ค้นหาภาพยนตร์</h1>
 					<ul class="breadcumb">
-						<li class="active"><a href="<?php echo site_url('HomeController') ?>">Home</a></li>
-						<li> <span class="ion-ios-arrow-right"></span> search movies</li>
+						<li class="active"><a href="<?php echo site_url('HomeController') ?>">หน้าหลัก</a></li>
+						<li> <span class="ion-ios-arrow-right"></span>ค้นหาภาพยนตร์</li>
 					</ul>
 				</div>
 			</div>
@@ -19,16 +19,20 @@
 			<div class="col-md-8 col-sm-12 col-xs-12">
 				<div class="topbar-filter">
 				<?php if (!empty($searchs)) : ?>
-					<?php echo '<p>Found <span>' . count($searchs) . ' movies</span> in total</p>' ?>
+					<?php echo '<p>ผลลัพธ์การค้นหา <span>' . count($searchs) . ' เรื่อง</span></p>' ?>
+				<?php elseif (!empty($advsearchs)) : ?>
+					<?php echo '<p>ผลลัพธ์การค้นหา <span>' . count($advsearchs) . ' เรื่อง</span></p>' ?>
+				<?php else : ?>
+					<p>ผลลัพธ์การค้นหา<span> 0 เรื่อง </span></p>
 				<?php endif; ?>
-					<label>Sort by:</label>
+					<label>เรียงตาม:</label>
 					<select>
-						<option value="popularity">Popularity Descending</option>
-						<option value="popularity">Popularity Ascending</option>
-						<option value="rating">Rating Descending</option>
-						<option value="rating">Rating Ascending</option>
-						<option value="date">Release date Descending</option>
-						<option value="date">Release date Ascending</option>
+						<option value="popularity">วันที่รีวิวล่าสุด มาก-น้อย</option>
+						<option value="popularity">วันที่รีวิวล่าสุด น้อย-มาก</option>
+						<option value="rating">คะแนนรีวิว มาก-น้อย</option>
+						<option value="rating">คะแนนรีวิว น้อย-มาก</option>
+						<option value="date">วันที่เข้าฉาย มาก-น้อย</option>
+						<option value="date">วันที่เข้าฉาย น้อย-มาก</option>
 					</select>
 					<a href="../assets/movielist.html" class="list"><i class="ion-ios-list-outline "></i></a>
 					<a  href="../assets/moviegrid.html" class="grid"><i class="ion-grid active"></i></a>
@@ -70,24 +74,6 @@
 						</div>
 					<?php endforeach; ?>
 				<?php endif; ?>
-				</div>		
-				<div class="topbar-filter">
-					<label>Movies per page:</label>
-					<select>
-						<option value="range">20 Movies</option>
-						<option value="saab">10 Movies</option>
-					</select>
-					
-					<div class="pagination2">
-						<span>Page 1 of 2:</span>
-						<a class="active" href="#">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#">...</a>
-						<a href="#">78</a>
-						<a href="#">79</a>
-						<a href="#"><i class="ion-arrow-right-b"></i></a>
-					</div>
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-12 col-xs-12">
@@ -97,33 +83,33 @@
 						<form method="get" class="form-style-1" action="SearchController">
 							<div class="row">
 								<div class="col-md-12 form-it">
-									<label>Movie name</label>
-									<input type="text" name="name" placeholder="Enter keywords">
+									<label>ชื่อภาพยนตร์</label>
+									<input type="text" name="name" placeholder="ใส่ชื่อที่ต้องการค้นหา">
 								</div>
 								<div class="col-md-12 form-it">
-									<label>Genres & Subgenres</label>
+									<label>ประเภท</label>
 									<div class="group-ip">
 										<select
 											name="genre" multiple="" class="ui fluid dropdown">
-											<option value="">Enter to filter genres</option>
+											<option value="">-- ประเภท --</option>
 											<option>แอ็คชัน</option>
 											<option>ผจญภัย</option>
 										</select>
 									</div>	
 								</div>
 								<div class="col-md-12 form-it">
-									<label>Release Year</label>
+									<label>ปีที่เข้าฉาย</label>
 									<div class="row">
 										<div class="col-md-6">
 											<select name="from">
-											  <option value="">From</option>
+											  <option value="">-- จาก --</option>
 											  <option>2017</option>
 												<option>2018</option>
 											</select>
 										</div>
 										<div class="col-md-6">
 											<select name="to">
-												<option value="">To</option>
+												<option value="">-- ถึง --</option>
 												<option>2017</option>
 												<option>2018</option>
 											</select>
@@ -131,7 +117,7 @@
 									</div>
 								</div>
 								<div class="col-md-12 ">
-									<input class="submit" type="submit" value="submit">
+									<input class="submit" type="submit" value="ค้นหา">
 								</div>
 							</div>
 						</form>

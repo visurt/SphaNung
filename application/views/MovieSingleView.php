@@ -9,22 +9,22 @@
 <div class="login-wrapper" id="review-content">
 	<div class="login-content">
 		<a href="#" class="close">x</a>
-		<h3>Write Review</h3>
+		<h3>แสดงความคิดเห็น</h3>
 		<form method="post" action="ReviewController">
 			<?php echo '<input type="hidden" name="movieid" value=' . $movie->id . '"/>' ?>
 			<?php echo '<input type="hidden" name="userid" value=' . $_SESSION['userinfo']['id'] . '"/>' ?>
 			<div class="row">
-				<label for=""> Rating:
+				<label for=""> คะแนน:
 					<input type="text" name="score" required="required" placeholder="1 - 100"/>
 				</label>
 			</div>
 			<div class="row">
-				<label for=""> Review:
-					<input type="text" name="review" required="required"/>
+				<label for=""> รีวิว:
+					<input type="text" name="review" required="required" placeholder="..."/>
 				</label>
 			</div>
 			<div class="row">
-				<button type="submit">Submit</button>
+				<button type="submit">บันทึก</button>
 			</div>
 		</form>
 	</div>
@@ -35,7 +35,7 @@
 		<a href="#" class="close">x</a>
 		
 			<div class="row">
-				<label for=""> Please Login..
+				<label for=""> ท่านยังไม่ได้เข้าสู่ระบบ..
 				</label>
 			</div>
 			
@@ -60,7 +60,7 @@
 					<?php echo '<img src="data:image/jpeg;base64,' . base64_encode($movie->poster) . '"/>'; ?>
 					<div class="movie-btn">	
 						<div class="btn-transform transform-vertical red">
-							<div><a href="#" class="item item-1 redbtn"> <i class="ion-play"></i> Watch Trailer</a></div>
+							<div><a href="#" class="item item-1 redbtn"> <i class="ion-play"></i> ตัวอย่างภาพยนตร์</a></div>
 							<?php echo '<div><a href="https://www.youtube.com/embed/' . $trailer->link . '" class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a></div>'; ?>
 						</div>
 					</div>
@@ -70,9 +70,9 @@
 				<div class="movie-single-ct main-content">
 					<?php echo '<h1 class="bd-hd">' . $movie->engname . '<span>' . $movie->year . '</span></h1>'; ?>
 					<div class="social-btn">
-						<a href="#" class="parent-btn"><i class="ion-heart"></i> Add to Favorite</a>
+						<a href="#" class="parent-btn"><i class="ion-heart"></i> เพิ่มลงในรายการโปรด</a>
 						<div class="hover-bnt">
-							<a href="#" class="parent-btn"><i class="ion-android-share-alt"></i>share</a>
+							<a href="#" class="parent-btn"><i class="ion-android-share-alt"></i>แชร์</a>
 							<div class="hvr-item">
 								<a href="#" class="hvr-grow"><i class="ion-social-facebook"></i></a>
 								<a href="#" class="hvr-grow"><i class="ion-social-twitter"></i></a>
@@ -89,11 +89,11 @@
 													<?php echo '<p><span>' . $score['avg'] / 10 . '</span> /10<br/>' ?>
 												<?php endif; ?>
 											<?php endforeach; ?>
-								<span class="rv"><?php echo $count ?> Reviews</span>
+								<span class="rv"><?php echo $count ?> รีวิว</span>
 							</p>
 						</div>
 						<div class="rate-star">
-							<p>Movie Rating: </p>
+							<p>เรตติ้งภาพยนตร์: </p>
 							<?php foreach ($scores as $score) : ?>
 							<?php if ($score['movieid'] == $movie->id) : ?>
 								<?php for ($x = floor($score['avg'] / 10); $x > 0; $x--) : ?>
@@ -111,29 +111,13 @@
 								<?php endif; ?>
 							<?php endif; ?>
 							<?php endforeach; ?>
-
-
-
-
-
-
-							<!-- <i class="ion-ios-star"></i>
-							<i class="ion-ios-star"></i>
-							<i class="ion-ios-star"></i>
-							<i class="ion-ios-star"></i>
-							<i class="ion-ios-star"></i>
-							<i class="ion-ios-star-outline"></i>
-							<i class="ion-ios-star-outline"></i>
-							<i class="ion-ios-star-outline"></i>
-							<i class="ion-ios-star-outline"></i>
-							<i class="ion-ios-star-outline"></i> -->
 						</div>
 					</div>
 					<div class="movie-tabs">
 						<div class="tabs">
 							<ul class="tab-links tabs-mv">
-								<li class="active"><a href="#overview">Overview</a></li>
-								<li><a href="#reviews"> Reviews</a></li>                    
+								<li class="active"><a href="#overview">ข้อมูลภาพยนตร์</a></li>
+								<li><a href="#reviews"> รีวิว</a></li>                    
 							</ul>
 							<div class="tab-content">
 								<div id="overview" class="tab active">
@@ -149,7 +133,6 @@
 												<?php foreach ($users as $user) : ?>
 												<?php if ($user->id == $_SESSION['userinfo']['id'] && $review->userid == $user->id && $review->movieid == $_GET['id']) : ?>
 													<div class="mv-user-review-item">
-														<?php echo '<h3>' . $user->name . '</h3>' ?>
 														<div class="no-star">
 															<?php $score = floor($review->score / 10) ?>
 															<?php for ($x = $score; $x > 0; $x--) : ?>
@@ -206,21 +189,21 @@
 											<div class="row">
 													<div class="rv-hd">
 														<div class="div">
-															<h3>Related Movies To</h3>
+															<h3></h3>
 														<?php echo '<h2>' . $movie->engname . '</h2>'; ?>
 														</div>
-														<a href="#" class="redbtn reviewLink">Write Review</a>
+														<a href="#" class="redbtn reviewLink">แสดงความคิดเห็น</a>
 													</div>
 													<div class="topbar-filter">
-											<p>Found <span><?php echo $count ?> reviews</span> in total</p>
-											<label>Filter by:</label>
+											<p>ผลลัพธ์การค้นหา <span><?php echo $count ?> รีวิว</span></p>
+											<label>เรียงตาม:</label>
 											<select>
-												<option value="popularity">Popularity Descending</option>
-												<option value="popularity">Popularity Ascending</option>
-												<option value="rating">Rating Descending</option>
-												<option value="rating">Rating Ascending</option>
-												<option value="date">Release date Descending</option>
-												<option value="date">Release date Ascending</option>
+											<option value="popularity">วันที่รีวิวล่าสุด มาก-น้อย</option>
+											<option value="popularity">วันที่รีวิวล่าสุด น้อย-มาก</option>
+											<option value="rating">คะแนนรีวิว มาก-น้อย</option>
+											<option value="rating">คะแนนรีวิว น้อย-มาก</option>
+											<option value="date">วันที่เข้าฉาย มาก-น้อย</option>
+											<option value="date">วันที่เข้าฉาย น้อย-มาก</option>
 											</select>
 										</div>
 										
@@ -289,24 +272,6 @@
 										<?php	endif; ?>
 										<?php endforeach; ?>
 										<?php endforeach; ?>
-
-										<div class="topbar-filter">
-											<label>Reviews per page:</label>
-											<select>
-												<option value="range">5 Reviews</option>
-												<option value="saab">10 Reviews</option>
-											</select>
-											<div class="pagination2">
-												<span>Page 1 of 6:</span>
-												<a class="active" href="#">1</a>
-												<a href="#">2</a>
-												<a href="#">3</a>
-												<a href="#">4</a>
-												<a href="#">5</a>
-												<a href="#">6</a>
-												<a href="#"><i class="ion-arrow-right-b"></i></a>
-											</div>
-										</div>
 												</div>
 										</div>
 											</div>
