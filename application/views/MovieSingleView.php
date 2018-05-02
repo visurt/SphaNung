@@ -6,9 +6,21 @@
 
 <?php if (isset($_SESSION['userinfo'])) : ?>
 <!--write review form popup-->
+
+	<?php $isAlreadyReviewed = false ?>
+	<?php foreach ($reviews as $review) : ?>
+		<?php foreach ($users as $user) : ?>
+			<?php if (isset($_SESSION['userinfo'])) : ?>
+				<?php if ($user->id == $_SESSION['userinfo']['id'] && $review->userid == $user->id && $review->movieid == $_GET['id']) : ?>
+					<?php $isAlreadyReviewed = true ?>
+				<?php endif; ?>
+			<?php endif; ?>
+		<?php endforeach; ?>
+	<?php endforeach; ?>
+
 <div class="login-wrapper" id="review-content">
 	<div class="login-content">
-		<a href="#" class="close">x</a>
+		<?php if (!$isAlreadyReviewed) : ?>
 		<h3>แสดงความคิดเห็น</h3>
 		<form method="post" action="ReviewController">
 			<?php echo '<input type="hidden" name="movieid" value=' . $movie->id . '"/>' ?>
@@ -27,6 +39,12 @@
 				<button type="submit">บันทึก</button>
 			</div>
 		</form>
+		<?php else : ?>
+		<div class="row">
+				<label for=""> ท่านได้รีวิวไปแล้ว..
+				</label>
+			</div>
+		<?php endif; ?>
 	</div>
 </div> <!--end of write review form popup-->
 <?php else : ?>
@@ -44,7 +62,7 @@
 </div> <!--end of write review form popup-->
 <?php endif; ?>
 
-<div class="hero mv-single-hero">
+<div class="hero" style="background: url('data:image/jpg;base64,<?php echo base64_encode($movie->bigposter) ?>') no-repeat; height: 598px;">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -69,19 +87,8 @@
 			<div class="col-md-8 col-sm-12 col-xs-12">
 				<div class="movie-single-ct main-content">
 					<?php echo '<h1 class="bd-hd">' . $movie->engname . '<span>' . $movie->year . '</span></h1>'; ?>
-					<div class="social-btn">
-						<a href="#" class="parent-btn"><i class="ion-heart"></i> เพิ่มลงในรายการโปรด</a>
-						<div class="hover-bnt">
-							<a href="#" class="parent-btn"><i class="ion-android-share-alt"></i>แชร์</a>
-							<div class="hvr-item">
-								<a href="#" class="hvr-grow"><i class="ion-social-facebook"></i></a>
-								<a href="#" class="hvr-grow"><i class="ion-social-twitter"></i></a>
-								<a href="#" class="hvr-grow"><i class="ion-social-googleplus"></i></a>
-								<a href="#" class="hvr-grow"><i class="ion-social-youtube"></i></a>
-							</div>
-						</div>		
-					</div>
-					<div class="movie-rate">
+					<?php echo '<h1 class="bd-hd">' . $movie->thainame . '<span>' . $movie->year . '</span></h1>' ?>
+					<div class="movie-rate" style="margin-top:33px">
 						<div class="rate">
 							<i class="ion-android-star"></i>
 							<?php foreach ($scores as $score) : ?>
@@ -113,7 +120,7 @@
 							<?php endforeach; ?>
 						</div>
 					</div>
-					<div class="movie-tabs">
+					:<div class="movie-tabs">
 						<div class="tabs">
 							<ul class="tab-links tabs-mv">
 								<li class="active"><a href="#overview">ข้อมูลภาพยนตร์</a></li>
@@ -124,10 +131,19 @@
 									<div class="row">
 										<div class="col-md-8 col-sm-12 col-xs-12">
 											<?php echo '<p>' . $movie->short . '</p>'; ?>
-											<?php if (isset($_SESSION['userinfo'])) : ?>
+											<?php $isReviewed = false ?>
+											<?php foreach ($reviews as $review) : ?>
+												<?php foreach ($users as $user) : ?>
+												<?php if (isset($_SESSION['userinfo'])) : ?>
+													<?php if ($user->id == $_SESSION['userinfo']['id'] && $review->userid == $user->id && $review->movieid == $_GET['id']) : ?>
+														<?php $isReviewed = true ?>
+													<?php endif; ?>
+												<?php endif; ?>
+												<?php endforeach; ?>
+											<?php endforeach; ?>
+											<?php if (isset($_SESSION['userinfo']) && $isReviewed) : ?>
 												<div class="title-hd-sm">
-													<h4>Your review</h4>
-													<a href="#" class="time">See All <?php echo $count ?> Reviews <i class="ion-ios-arrow-right"></i></a>
+													<h4>ความเห็นของฉัน</h4>
 												</div>
 												<?php foreach ($reviews as $review) : ?>
 												<?php foreach ($users as $user) : ?>
@@ -155,31 +171,33 @@
 												<?php endif; ?>
 												<?php endforeach; ?>
 												<?php endforeach; ?>
+												
+
 											<?php endif; ?>
 										</div>
 													<div class="col-md-4 col-xs-12 col-sm-12">
 														<div class="sb-it">
-															<h6>ผู้กำกับ : </h6>
+															<h6><u>ผู้กำกับ</u> :</h6>
 															<?php echo '<p>' . $movie->directer . '</p>'; ?>
 														</div>
 														<div class="sb-it">
-															<h6>นักแสดง : </h6>
+															<h6><u>นักแสดง</u> :</h6>
 															<?php echo '<p>' . $movie->cast . '</p>'; ?>
 														</div>
 														<div class="sb-it">
-															<h6>หมวดหมู่ :</h6>
+															<h6><u>หมวดหมู่</u> :</h6>
 															<?php echo '<p>' . $movie->genre . '</p>'; ?>
 														</div>
 														<div class="sb-it">
-															<h6>วันที่เข้าฉาย :</h6>
+															<h6><u>วันที่เข้าฉาย</u> :</h6>
 															<?php echo '<p>' . $movie->date . '</p>'; ?>
 														</div>
 														<div class="sb-it">
-															<h6>ความยาว :</h6>
+															<h6><u>ความยาว</u> :</h6>
 															<?php echo '<p>' . $movie->runtime . ' นาที</p>'; ?>
 														</div>
 														<div class="sb-it">
-															<h6>ความเหมาะสม :</h6>
+															<h6><u>ความเหมาะสม</u> :</h6>
 															<?php echo '<p>' . $movie->age . '</p>'; ?>
 														</div>
 													</div>
@@ -196,15 +214,7 @@
 													</div>
 													<div class="topbar-filter">
 											<p>ผลลัพธ์การค้นหา <span><?php echo $count ?> รีวิว</span></p>
-											<label>เรียงตาม:</label>
-											<select>
-											<option value="popularity">วันที่รีวิวล่าสุด มาก-น้อย</option>
-											<option value="popularity">วันที่รีวิวล่าสุด น้อย-มาก</option>
-											<option value="rating">คะแนนรีวิว มาก-น้อย</option>
-											<option value="rating">คะแนนรีวิว น้อย-มาก</option>
-											<option value="date">วันที่เข้าฉาย มาก-น้อย</option>
-											<option value="date">วันที่เข้าฉาย น้อย-มาก</option>
-											</select>
+											
 										</div>
 										
 										<?php foreach ($reviews as $review) : ?>

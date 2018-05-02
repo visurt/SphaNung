@@ -25,17 +25,6 @@
 				<?php else : ?>
 					<p>ผลลัพธ์การค้นหา<span> 0 เรื่อง </span></p>
 				<?php endif; ?>
-					<label>เรียงตาม:</label>
-					<select>
-						<option value="popularity">วันที่รีวิวล่าสุด มาก-น้อย</option>
-						<option value="popularity">วันที่รีวิวล่าสุด น้อย-มาก</option>
-						<option value="rating">คะแนนรีวิว มาก-น้อย</option>
-						<option value="rating">คะแนนรีวิว น้อย-มาก</option>
-						<option value="date">วันที่เข้าฉาย มาก-น้อย</option>
-						<option value="date">วันที่เข้าฉาย น้อย-มาก</option>
-					</select>
-					<a href="../assets/movielist.html" class="list"><i class="ion-ios-list-outline "></i></a>
-					<a  href="../assets/moviegrid.html" class="grid"><i class="ion-grid active"></i></a>
 				</div>
 				<div class="flex-wrap-movielist">
 				<?php if (!empty($searchs)) : ?>

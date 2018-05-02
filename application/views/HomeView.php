@@ -20,28 +20,6 @@
 										<?php echo '<a href="MovieSingleController?id=' . $movie->id . '">' . $movie->engname . '<br/>' . $movie->thainame . '</a>' ?>
 									</h1>
 									<br/><br/>
-									<div class="social-btn">
-										<a href="#" class="parent-btn">
-											<i class="ion-heart"></i> เพิ่มลงในรายการโปรด</a>
-										<div class="hover-bnt">
-											<a href="#" class="parent-btn">
-												<i class="ion-android-share-alt"></i>แชร์</a>
-											<div class="hvr-item">
-												<a href="#" class="hvr-grow">
-													<i class="ion-social-facebook"></i>
-												</a>
-												<a href="#" class="hvr-grow">
-													<i class="ion-social-twitter"></i>
-												</a>
-												<a href="#" class="hvr-grow">
-													<i class="ion-social-googleplus"></i>
-												</a>
-												<a href="#" class="hvr-grow">
-													<i class="ion-social-youtube"></i>
-												</a>
-											</div>
-										</div>
-									</div>
 									<div class="mv-details">
 										<p>
 											<i class="ion-android-star"></i>
@@ -92,13 +70,7 @@
 			<div class="tabs">
 				<ul class="tab-links">
 					<li class="active">
-						<a href="#tab1-h2">#ล่าสุด</a>
-					</li>
-					<li>
-						<a href="#tab2-h2"> #คะแนนสูงสุด</a>
-					</li>
-					<li>
-						<a href="#tab3-h2"> #คนรีวิวมากสุด</a>
+						<a href="#tab1-h2"># เมษายน 2018</a>
 					</li>
 				</ul>
 				<div class="tab-content">
